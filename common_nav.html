@@ -1,0 +1,38 @@
+<!-- COMMON NAV BAR -->
+<head>
+	<title id="page_title">Faysal Khatri</title>
+	<link rel="shortcut icon" href="/avatar.jpg" type="image/x-icon">
+	<link rel="stylesheet" href="/w3-modified.css">
+</head>
+
+
+
+<div class="w3-top">
+  <div class="w3-white w3-medium w3-bar" style="margin:auto">
+    <a href="http://www.fkhatri.net" class="w3-bar-item w3-button w3-hover-none" style="font-size:100%;width:13%;vertical-align=middle">FAYSAL KHATRI</a>
+	<a href="/resume.jsp?nav=t2" class="w3-bar-item w3-button w3-hover-none" style="width:14.5%" id='t2'><b>Resume</b></a>
+	<a href="/technical.jsp?nav=t3" class="w3-bar-item w3-button w3-hover-none" style="width:14.5%" id='t3'><b>Technical</b></a>
+	<a href="/recipes.jsp?nav=t1" class="w3-bar-item w3-button w3-hover-none" style="width:14.5%" id='t1'><b>Recipes</b></a>
+	<a href="/random.jsp?nav=t4" class="w3-bar-item w3-button w3-hover-none" style="width:14.5%" id='t4'><b>Random</b></a>
+    <a href="/about.html?nav=t5" class="w3-bar-item w3-button w3-hover-none" style="width:14.5%" id='t5'><b>About this Site</b></a>
+	<a href="/contact.jsp?nav=t6" class="w3-bar-item w3-button w3-hover-none" style="width:14.5%" id='t6'><b>Contact</b></a>
+  </div>
+</div>
+
+<script>
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+var currentTopNav = document.getElementById( getParameterByName("nav") );
+currentTopNav.setAttribute("style", "width:14.5%; border-top:3px solid black");
+
+</script>
+
+<!-- border-left:3px solid black; border-right:3px solid black; -->

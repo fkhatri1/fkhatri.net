@@ -1,0 +1,171 @@
+<html> 
+
+<!--#include virtual="/common_nav.html" -->
+
+<title>Pizza Hut Option A Brute Force</title>
+<!--
+<style>
+table {
+    border: 5px solid darkgreen;
+}
+td {
+	height: 30px;
+	vertical-align: middle;
+	text-align: center;
+}
+p, li {
+	font-family:verdana;
+}
+
+</style>
+-->
+
+<body>
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:65px">
+<div class="w3-row-padding w3-padding-16 w3-center" id="content">
+
+	<div class="w3-center w3-border">
+	<h1>Pizza Hut Pi-Day Challenge</h1>
+	March 14, 2016
+	
+	<h3>Problem Statement</h3>
+	<div class="w3-cell-row">
+	<div style="width:5%" class="w3-cell"></div>
+	<div style="align:center">
+	<p style="text-align:center"><b>I’m thinking of a ten-digit integer whose digits are all distinct.
+	<br>It happens that the number formed by the first n of them is divisible by n for each n from 1 to 10.
+	<br>What is my number?</b></p>
+	<p style="text-align:center"> Pizza Hut posted this question as part of a <a href="http://blog.pizzahut.com/flavor-news/national-pi-day-math-contest-problems-are-here-2/">competition</a> for winning free pizza for pi days on 3/14/16. <br>I didn't win, by the way.</p>
+	</div>
+	<div style="width:5%" class="w3-cell"> </div>
+	</div>
+	
+	<h3>Notes</h3>
+	<div class="w3-cell-row">
+	<div style="width:5%" class="w3-cell"></div>
+	<div style="align:center">
+	<p style="text-align:center">Unable to think of any solution using logic, I set out to write a script to find the answer. I developed the algorithm on the way home from work, and took about 2 hours to code it. I acknowledge that this is a brute force algorithm, but it might be the most clever one. A recursive function tests and builds leading sequences until each sequence is founds to be incorrect , so not all possible combinations need to be tested. See the comments in <a href="/technical/pizzahutcode.html"><b>the code</b></a>. I added logging to help with debugging. As it turned out, the main finding of all this work is that logging is extremely slow, at least in the way this script does it (printing to the page may be especially slow). Turning logging on increases the duration 1000-fold. The script is run client-side. My laptop ran it without logging in 8 milliseconds. My phone took 90 milliseconds.
+	</p>
+	</div>
+	<div style="width:5%" class="w3-cell"> </div>
+	</div>	
+	
+	<h3>The Solution</h3>
+	<div class="w3-cell-row">
+	<div style="width:5%" class="w3-cell"></div>
+	<div style="align:center">
+	<form action="" onSubmit="javascript:iterator();return false;">
+		<input type="submit" value="Find the answer!">
+		<br><p><input type="checkbox" id="logtoggle"> Logging</p><br>
+	</form>
+	<p id="starttime">Start Time: </p>
+	<p id="endtime">End Time: </p>
+
+	<table align="center">
+		<tr><td width=100><p><b>n</b></p></td><td width=100><p><b>Digit</b></p></td><td width=400></td></tr>
+		<tr><td width=100><p>1</p></td><td width=100><p id="digit1">-</p></td><td id="comment1"></td></tr>
+		<tr><td width=100><p>2</p></td><td width=100><p id="digit2">-</p></td><td id="comment2"></td></tr>
+		<tr><td width=100><p>3</p></td><td width=100><p id="digit3">-</p></td><td id="comment3"></td></tr>
+		<tr><td width=100><p>4</p></td><td width=100><p id="digit4">-</p></td><td id="comment4"></td></tr>
+		<tr><td width=100><p>5</p></td><td width=100><p id="digit5">-</p></td><td id="comment5"></td></tr>
+		<tr><td width=100><p>6</p></td><td width=100><p id="digit6">-</p></td><td id="comment6"></td></tr>
+		<tr><td width=100><p>7</p></td><td width=100><p id="digit7">-</p></td><td id="comment7"></td></tr>
+		<tr><td width=100><p>8</p></td><td width=100><p id="digit8">-</p></td><td id="comment8"></td></tr>
+		<tr><td width=100><p>9</p></td><td width=100><p id="digit9">-</p></td><td id="comment9"></td></tr>
+		<tr><td width=100><p>10</p></td><td width=100><p id="digit10">-</p></td><td id="comment10"></td></tr>
+	</table>
+	<br>
+	<p><u><b>Log</b></u></p>
+	<p id="log"></p>
+	</div>
+	<div style="width:5%" class="w3-cell"> </div>
+	</div>	
+
+
+	</div>
+
+
+
+</div>
+
+
+</font>
+</body> 
+</html>
+
+<script type="text/javascript">
+document.title = "Pizza Hut Challenge";
+var starttime;
+var endtime;
+var duration;
+var quotient;
+var log;
+var toggle;
+
+function iterator() {  //this function feeds the first digit into the recursive brute()
+	toggle = document.getElementById("logtoggle").checked;
+	
+	starttime = Date.now();
+	document.getElementById("starttime").innerHTML = "Start Time: " + starttime
+	for (var d=1; d<10; d++) {  //here we loop from 1 to 9 as the first digit
+		document.getElementById("digit1").innerHTML = d.toString();
+		document.getElementById("comment1").innerHTML = "<p>Success! " + d + " is divisible by 1! (" + d.toString() + ")</p>";
+		if (toggle) {
+			log = document.getElementById("log").innerHTML;
+			document.getElementById("log").innerHTML = log + "<br>" + Date.now() + " - Success! " + d + " is divisible by 1! (" + d.toString() + ")";
+		}
+		if (brute(d)) {
+			d=10 //if brute() returns true, then there's no need to continue. this exits the for loop
+		}
+	}
+}
+
+function brute(prospect) {  //this is the recursive function which tests combinations
+	
+	var Sprospect = prospect.toString();
+	var nextProspect;
+	
+	for (var i=0; i<10; i++) {  //i is the last digit in the next prospective sequence
+		nextProspect = Sprospect + i.toString();
+		if (Sprospect.indexOf(i.toString()) == -1) {  //skip this i if it is already in the sequence
+			if (parseInt(nextProspect) % (nextProspect.length) == 0) { //test if divisible by n (length)
+				//writes out the successful prospect
+				var currentRow = nextProspect.toString().length;
+				quotient = nextProspect / nextProspect.length;
+				document.getElementById("digit" + currentRow.toString()).innerHTML = i.toString();
+				document.getElementById("comment" + currentRow.toString()).innerHTML = "<p>Success! " + nextProspect.toString() + " is divisible by " + nextProspect.toString().length.toString() + "! (" + quotient.toString() +")</p>";
+				
+				if (toggle) {  //logging
+					log = document.getElementById("log").innerHTML;
+					document.getElementById("log").innerHTML = log + "<br>" + Date.now() + " - Success! " + nextProspect.toString() + " is divisible by " + nextProspect.toString().length.toString() + "! (" + quotient.toString() +")</p>";
+					}
+				
+				if (nextProspect.length == 10) { //final answer will be 10 digits long
+					endtime = Date.now();
+					document.getElementById("endtime").innerHTML = "End Time: " + endtime;
+					duration = endtime - starttime;
+					alert("The answer is: " + nextProspect + "!!! ");
+					alert("It took " + duration.toString() + " milliseconds to find the answer.");
+					return true;
+				}
+				
+				else if (brute(nextProspect)) { //calls itself to find the next digit
+					return true;
+				}					
+			}
+		}
+		//logging
+		if (toggle) {
+			log = document.getElementById("log").innerHTML;
+			document.getElementById("log").innerHTML = log + "<br>" + Date.now() + " - Failure! " + nextProspect.toString() + " is not the answer!";
+		}
+	}
+	
+}
+
+
+
+</script>
+
+</html>
+

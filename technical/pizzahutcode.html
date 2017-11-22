@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+	font-weight: bold;
+}
+.sc1 {
+	color: #0000FF;
+}
+.sc3 {
+	color: #FF0000;
+}
+.sc5 {
+	color: #FF0000;
+}
+.sc6 {
+	font-weight: bold;
+	color: #8000FF;
+}
+.sc8 {
+}
+.sc9 {
+	color: #008000;
+}
+.sc40 {
+}
+.sc41 {
+	background: #F2F4FF;
+}
+.sc43 {
+	color: #008000;
+	background: #F2F4FF;
+}
+.sc45 {
+	color: #FF0000;
+	background: #F2F4FF;
+}
+.sc46 {
+	background: #F2F4FF;
+}
+.sc47 {
+	font-weight: bold;
+	font-style: italic;
+	color: #000080;
+	background: #F2F4FF;
+}
+.sc48 {
+	color: #808080;
+	background: #F2F4FF;
+}
+.sc50 {
+	font-weight: bold;
+	background: #F2F4FF;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #FFFFFF; ">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">starttime</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">endtime</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">duration</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">quotient</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">log</span><span class="sc50">;</span><span class="sc41">
+</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">toggle</span><span class="sc50">;</span><span class="sc41">
+
+</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc46">iterator</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">  </span><span class="sc43">//this function feeds the first digit into the recursive brute()</span><span class="sc41">
+    </span><span class="sc46">toggle</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"logtoggle"</span><span class="sc50">).</span><span class="sc46">checked</span><span class="sc50">;</span><span class="sc41">
+    
+    </span><span class="sc46">starttime</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">Date.now</span><span class="sc50">();</span><span class="sc41">
+    </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"starttime"</span><span class="sc50">).</span><span class="sc46">innerHTML</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"Start Time: "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">starttime</span><span class="sc41">
+    </span><span class="sc47">for</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">d</span><span class="sc50">=</span><span class="sc45">1</span><span class="sc50">;</span><span class="sc41"> </span><span class="sc46">d</span><span class="sc50">&lt;</span><span class="sc45">10</span><span class="sc50">;</span><span class="sc41"> </span><span class="sc46">d</span><span class="sc50">++)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">  </span><span class="sc43">//here we loop from 1 to 9 as the first digit</span><span class="sc41">
+        </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"digit1"</span><span class="sc50">).</span><span class="sc46">innerHTML</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">d.toString</span><span class="sc50">();</span><span class="sc41">
+        </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"comment1"</span><span class="sc50">).</span><span class="sc46">innerHTML</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"&lt;p&gt;Success! "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">d</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">" is divisible by 1! ("</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">d.toString</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">")&lt;/p&gt;"</span><span class="sc50">;</span><span class="sc41">
+        </span><span class="sc47">if</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc46">toggle</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">
+            </span><span class="sc46">log</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"log"</span><span class="sc50">).</span><span class="sc46">innerHTML</span><span class="sc50">;</span><span class="sc41">
+            </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"log"</span><span class="sc50">).</span><span class="sc46">innerHTML</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">log</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">"&lt;br&gt;"</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">Date.now</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">" - Success! "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">d</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">" is divisible by 1! ("</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">d.toString</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">")"</span><span class="sc50">;</span><span class="sc41">
+        </span><span class="sc50">}</span><span class="sc41">
+        </span><span class="sc47">if</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc46">brute</span><span class="sc50">(</span><span class="sc46">d</span><span class="sc50">))</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">
+            </span><span class="sc46">d</span><span class="sc50">=</span><span class="sc45">10</span><span class="sc41"> </span><span class="sc43">//if brute() returns true, then there's no need to continue. this exits the for loop</span><span class="sc41">
+        </span><span class="sc50">}</span><span class="sc41">
+    </span><span class="sc50">}</span><span class="sc41">
+</span><span class="sc50">}</span><span class="sc41">
+
+</span><span class="sc47">function</span><span class="sc41"> </span><span class="sc46">brute</span><span class="sc50">(</span><span class="sc46">prospect</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">  </span><span class="sc43">//this is the recursive function which tests combinations</span><span class="sc41">
+    
+    </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">Sprospect</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">prospect.toString</span><span class="sc50">();</span><span class="sc41">
+    </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">nextProspect</span><span class="sc50">;</span><span class="sc41">
+    
+    </span><span class="sc47">for</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">i</span><span class="sc50">=</span><span class="sc45">0</span><span class="sc50">;</span><span class="sc41"> </span><span class="sc46">i</span><span class="sc50">&lt;</span><span class="sc45">10</span><span class="sc50">;</span><span class="sc41"> </span><span class="sc46">i</span><span class="sc50">++)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">  </span><span class="sc43">//i is the last digit in the next prospective sequence</span><span class="sc41">
+        </span><span class="sc46">nextProspect</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">Sprospect</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">i.toString</span><span class="sc50">();</span><span class="sc41">
+        </span><span class="sc47">if</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc46">Sprospect.indexOf</span><span class="sc50">(</span><span class="sc46">i.toString</span><span class="sc50">())</span><span class="sc41"> </span><span class="sc50">==</span><span class="sc41"> </span><span class="sc50">-</span><span class="sc45">1</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">  </span><span class="sc43">//skip this i if it is already in the sequence</span><span class="sc41">
+            </span><span class="sc47">if</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc46">parseInt</span><span class="sc50">(</span><span class="sc46">nextProspect</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">%</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc46">nextProspect.length</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">==</span><span class="sc41"> </span><span class="sc45">0</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41"> </span><span class="sc43">//test if divisible by n (length)</span><span class="sc41">
+                </span><span class="sc43">//writes out the successful prospect</span><span class="sc41">
+                </span><span class="sc47">var</span><span class="sc41"> </span><span class="sc46">currentRow</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">nextProspect.toString</span><span class="sc50">().</span><span class="sc46">length</span><span class="sc50">;</span><span class="sc41">
+                </span><span class="sc46">quotient</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">nextProspect</span><span class="sc41"> </span><span class="sc50">/</span><span class="sc41"> </span><span class="sc46">nextProspect.length</span><span class="sc50">;</span><span class="sc41">
+                </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"digit"</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">currentRow.toString</span><span class="sc50">()).</span><span class="sc46">innerHTML</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">i.toString</span><span class="sc50">();</span><span class="sc41">
+                </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"comment"</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">currentRow.toString</span><span class="sc50">()).</span><span class="sc46">innerHTML</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"&lt;p&gt;Success! "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">nextProspect.toString</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">" is divisible by "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">nextProspect.toString</span><span class="sc50">().</span><span class="sc46">length.toString</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">"! ("</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">quotient.toString</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc48">")&lt;/p&gt;"</span><span class="sc50">;</span><span class="sc41">
+                
+                </span><span class="sc47">if</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc46">toggle</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">  </span><span class="sc43">//logging</span><span class="sc41">
+                    </span><span class="sc46">log</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"log"</span><span class="sc50">).</span><span class="sc46">innerHTML</span><span class="sc50">;</span><span class="sc41">
+                    </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"log"</span><span class="sc50">).</span><span class="sc46">innerHTML</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">log</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">"&lt;br&gt;"</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">Date.now</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">" - Success! "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">nextProspect.toString</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">" is divisible by "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">nextProspect.toString</span><span class="sc50">().</span><span class="sc46">length.toString</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">"! ("</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">quotient.toString</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc48">")&lt;/p&gt;"</span><span class="sc50">;</span><span class="sc41">
+                    </span><span class="sc50">}</span><span class="sc41">
+                
+                </span><span class="sc47">if</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc46">nextProspect.length</span><span class="sc41"> </span><span class="sc50">==</span><span class="sc41"> </span><span class="sc45">10</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41"> </span><span class="sc43">//final answer will be 10 digits long</span><span class="sc41">
+                    </span><span class="sc46">endtime</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">Date.now</span><span class="sc50">();</span><span class="sc41">
+                    </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"endtime"</span><span class="sc50">).</span><span class="sc46">innerHTML</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc48">"End Time: "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">endtime</span><span class="sc50">;</span><span class="sc41">
+                    </span><span class="sc46">duration</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">endtime</span><span class="sc41"> </span><span class="sc50">-</span><span class="sc41"> </span><span class="sc46">starttime</span><span class="sc50">;</span><span class="sc41">
+                    </span><span class="sc46">alert</span><span class="sc50">(</span><span class="sc48">"The answer is: "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">nextProspect</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">"!!! "</span><span class="sc50">);</span><span class="sc41">
+                    </span><span class="sc46">alert</span><span class="sc50">(</span><span class="sc48">"It took "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">duration.toString</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">" milliseconds to find the answer."</span><span class="sc50">);</span><span class="sc41">
+                    </span><span class="sc47">return</span><span class="sc41"> </span><span class="sc47">true</span><span class="sc50">;</span><span class="sc41">
+                </span><span class="sc50">}</span><span class="sc41">
+                
+                </span><span class="sc47">else</span><span class="sc41"> </span><span class="sc47">if</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc46">brute</span><span class="sc50">(</span><span class="sc46">nextProspect</span><span class="sc50">))</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41"> </span><span class="sc43">//calls itself to find the next digit</span><span class="sc41">
+                    </span><span class="sc47">return</span><span class="sc41"> </span><span class="sc47">true</span><span class="sc50">;</span><span class="sc41">
+                </span><span class="sc50">}</span><span class="sc41">                   
+            </span><span class="sc50">}</span><span class="sc41">
+        </span><span class="sc50">}</span><span class="sc41">
+        </span><span class="sc43">//logging</span><span class="sc41">
+        </span><span class="sc47">if</span><span class="sc41"> </span><span class="sc50">(</span><span class="sc46">toggle</span><span class="sc50">)</span><span class="sc41"> </span><span class="sc50">{</span><span class="sc41">
+            </span><span class="sc46">log</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"log"</span><span class="sc50">).</span><span class="sc46">innerHTML</span><span class="sc50">;</span><span class="sc41">
+            </span><span class="sc46">document.getElementById</span><span class="sc50">(</span><span class="sc48">"log"</span><span class="sc50">).</span><span class="sc46">innerHTML</span><span class="sc41"> </span><span class="sc50">=</span><span class="sc41"> </span><span class="sc46">log</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">"&lt;br&gt;"</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">Date.now</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">" - Failure! "</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc46">nextProspect.toString</span><span class="sc50">()</span><span class="sc41"> </span><span class="sc50">+</span><span class="sc41"> </span><span class="sc48">" is not the answer!"</span><span class="sc50">;</span><span class="sc41">
+        </span><span class="sc50">}</span><span class="sc41">
+    </span><span class="sc50">}</span><span class="sc41">
+    
+</span><span class="sc50">}</span><span class="sc41">
+
+
+
+</div></body>
+</html>

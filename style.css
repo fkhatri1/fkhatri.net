@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Overpass');
+
+h1 {
+	font-family: 'Overpass';
+    color: #000;
+    font-size: 100px;
+    text-align: center;
+    font-weight: lighter;
+	margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+a.menu {
+	font-family: 'Overpass';
+    color: #000;
+    font-size: 40px;
+    text-align: center;
+    font-weight: lighter;
+	margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+a.menu:hover {
+	font-family: 'Overpass';
+    color: #cce0ff;
+    font-size: 40px;
+    text-align: center;
+    font-weight: lighter;
+	margin-bottom: 10px;
+    margin-top: 10px;
+	text-shadow: 1px 1px 2px #000;
+}
+
+td.menu {
+	padding: 25px;
+	text-align: center;
+}
+
+img.avatar {
+	display: block;
+    margin: auto;
+    width: 15%;
+	border: 0px;
+}

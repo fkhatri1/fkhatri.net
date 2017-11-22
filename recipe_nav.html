@@ -1,0 +1,32 @@
+<!-- RECIPE NAV BAR -->
+<link rel="stylesheet" href="/w3-modified.css">
+
+
+<div class="w3-top" style="margin-top:30px">
+  <div class="w3-white w3-medium w3-bar" style="margin:auto">
+	<a href="recipes.jsp?cat=r4&nav=t1" id='r4' class="w3-bar-item w3-button w3-hover-none" style="width:10.5%">Breakfast</a>
+	<a href="recipes.jsp?cat=r2&nav=t1" id='r2' class="w3-bar-item w3-button w3-hover-none" style="width:10.5%">Breads</a>
+    <a href="recipes.jsp?cat=r3&nav=t1" id='r3' class="w3-bar-item w3-button w3-hover-none" style="width:10.5%">Soups</a>
+	<a href="recipes.jsp?cat=r1&nav=t1" id='r1' class="w3-bar-item w3-button w3-hover-none" style="width:10.5%">Barbecue</a>
+	<a href="recipes.jsp?cat=r5&nav=t1" id='r5' class="w3-bar-item w3-button w3-hover-none" style="width:10.5%">Indian</a>
+	<a href="recipes.jsp?cat=r6&nav=t1" id='r6' class="w3-bar-item w3-button w3-hover-none" style="width:10.5%">Asian</a>
+	<a href="recipes.jsp?cat=r7&nav=t1" id='r7' class="w3-bar-item w3-button w3-hover-none" style="width:10.5%">Dessert</a>
+	<a href="recipes.jsp?cat=r8&nav=t1" id='r8' class="w3-bar-item w3-button w3-hover-none" style="width:18.5%">Everything Else</a>
+  </div>
+</div>
+
+<script>
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+var currentRecNav = document.getElementById( getParameterByName("cat") );
+currentRecNav.setAttribute("style", "width:12.5%; border-bottom:2px solid black");
+
+</script>
